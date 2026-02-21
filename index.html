@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Payment Analysis: Zoho One</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #ffffff; 
+            color: #1e293b; 
+        }
+        
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            height: 350px;
+        }
+        
+        @media (min-width: 768px) {
+            .chart-container { height: 400px; }
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+        }
+
+        .highlight-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="bg-[#0f172a] text-white py-16 px-4 shadow-2xl relative overflow-hidden text-center">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tighter mb-4 italic uppercase">
+                THE REAL COST <span class="text-blue-500">ANALYSIS</span>
+            </h1>
+            <p class="text-xl text-slate-400 max-w-2xl mx-auto font-light">
+                Comparing Zoho Payments against market alternatives to identify the most efficient ecosystem for our business.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
+
+        <!-- WHY ZOHO PAYMENTS WINS SECTION -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <h2 class="text-3xl font-bold text-slate-900">Why Zoho Payments is the Superior Choice</h2>
+                <p class="text-slate-600 text-lg leading-relaxed">
+                    While other gateways offer competitive rates, <strong>Zoho Payments is better overall</strong> due to its native architecture within Zoho One. It eliminates the manual labor and technical friction that degrades profit margins.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold">✓</div>
+                        <p class="text-slate-700"><strong>Automatic Reconciliation:</strong> Payments are automatically matched in Zoho Books. Third-party gateways require manual matching or extra sync tools.</p>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold">✓</div>
+                        <p class="text-slate-700"><strong>Minor Development Overhead:</strong> Integrated setup reduces API configuration and testing cycles required for CRM integration.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gradient-bg p-8 rounded-3xl border border-blue-100 shadow-sm">
+                <div class="text-center mb-6">
+                    <h3 class="font-bold text-slate-800">TDR Cost Comparison</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="mainFeeChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- CORE STATS SECTION -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="highlight-card p-8 rounded-2xl text-center">
+                <div class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-3">Zoho UPI TDR</div>
+                <div class="text-5xl font-extrabold text-blue-600">0.5%</div>
+                <p class="text-slate-500 text-xs mt-3 italic">Significant savings over 2% standard rates</p>
+            </div>
+            <div class="highlight-card p-8 rounded-2xl text-center">
+                <div class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-3">Bank Transfer Cap</div>
+                <div class="text-5xl font-extrabold text-slate-900">₹10</div>
+                <p class="text-slate-500 text-xs mt-3 italic">1% fee with a hard maximum cap</p>
+            </div>
+            <div class="highlight-card p-8 rounded-2xl text-center">
+                <div class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-3">Paytm UPI Rate</div>
+                <div class="text-5xl font-extrabold text-emerald-600">0%</div>
+                <p class="text-slate-500 text-xs mt-3 italic">Lowest rate but highest API effort</p>
+            </div>
+        </section>
+
+        <!-- DETAILED TABLE SECTION -->
+        <section>
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold text-slate-900">Comparative Matrix</h3>
+            </div>
+            <div class="overflow-x-auto bg-white rounded-2xl shadow-sm border border-slate-200">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50 text-slate-600">
+                            <th class="p-6 font-bold uppercase tracking-wider text-xs border-b">Aspect</th>
+                            <th class="p-6 font-bold uppercase tracking-wider text-xs border-b">Razorpay</th>
+                            <th class="p-6 font-bold uppercase tracking-wider text-xs border-b">Zoho Payments</th>
+                            <th class="p-6 font-bold uppercase tracking-wider text-xs border-b text-emerald-700">Paytm</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr>
+                            <td class="p-6 font-semibold text-sm text-slate-500">UPI TDR</td>
+                            <td class="p-6 text-red-500 font-bold">2.0%</td>
+                            <td class="p-6 text-blue-600 font-bold">0.5%</td>
+                            <td class="p-6 text-emerald-600 font-bold">0%</td>
+                        </tr>
+                        <tr>
+                            <td class="p-6 font-semibold text-sm text-slate-500">Bank Transfer</td>
+                            <td class="p-6 text-red-500">2.0%</td>
+                            <td class="p-6 text-blue-600 font-bold">1% (Max ₹10)</td>
+                            <td class="p-6 text-slate-400">N/A</td>
+                        </tr>
+                        <tr>
+                            <td class="p-6 font-semibold text-sm text-slate-500">API Development</td>
+                            <td class="p-6 text-slate-600 text-sm">Testing Required</td>
+                            <td class="p-6 text-blue-600 font-bold text-sm">Minor Effort</td>
+                            <td class="p-6 text-slate-600 text-sm">Addl. Support Needed</td>
+                        </tr>
+                        <tr>
+                            <td class="p-6 font-semibold text-sm text-slate-500">CRM Config</td>
+                            <td class="p-6 text-slate-400 text-sm">Manual Mapping</td>
+                            <td class="p-6 text-blue-600 font-bold text-sm">Integrated</td>
+                            <td class="p-6 text-slate-400 text-sm">Addl. Config Req.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- VENDOR SUPPORT & RESOLUTION -->
+        <section class="bg-slate-900 rounded-3xl p-10 text-white flex flex-col md:flex-row gap-12 items-center">
+            <div class="flex-1 space-y-4">
+                <h3 class="text-3xl font-bold italic">Streamlined Troubleshooting</h3>
+                <p class="text-slate-400 leading-relaxed">
+                    If any technical challenges arise, we can <strong>connect directly with Zoho Payments support</strong> instead of checking with multiple vendors. This "Single Source of Truth" avoids the common trap where different vendors blame each other for API failures.
+                </p>
+            </div>
+            <div class="w-full md:w-auto">
+                <div class="bg-blue-600 p-8 rounded-2xl text-center shadow-2xl">
+                    <div class="text-sm font-bold uppercase tracking-widest opacity-80 mb-2">Support Advantage</div>
+                    <div class="text-2xl font-black">Direct Zoho Line</div>
+                    <div class="h-1 w-12 bg-white/30 mx-auto my-4"></div>
+                    <p class="text-xs opacity-80">No Third-Party Coordination</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white py-16 border-t border-slate-100 mt-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h4 class="text-sm font-bold text-slate-900 uppercase tracking-widest mb-4">Summary</h4>
+                <p class="text-slate-500 text-sm leading-relaxed italic">
+                    Zoho Payments is overall better compared to all alternatives for our Zoho One instance. Payments are automatically reconciled in Zoho Books; third-party gateways require manual matching or extra sync tools. Comparison based on TDR rates: Zoho (0.5% UPI), Razorpay (2% All), Paytm (0% UPI/RuPay).
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const labels = ['UPI', 'Cards (V/M)', 'RuPay Debit', 'Net Banking'];
+        const processedLabels = labels.map(l => (l.length > 16 ? [l.split(' ')[0], l.split(' ').slice(1).join(' ')] : l));
+
+        const ctx = document.getElementById('mainFeeChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: processedLabels,
+                datasets: [
+                    { label: 'Razorpay', data: [2.0, 2.0, 2.0, 2.0], backgroundColor: '#cbd5e1', borderRadius: 6 },
+                    { label: 'Zoho Payments', data: [0.5, 2.0, 2.0, 2.0], backgroundColor: '#2563eb', borderRadius: 6 },
+                    { label: 'Paytm', data: [0, 1.99, 0, 1.80], backgroundColor: '#10b981', borderRadius: 6 }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { 
+                        position: 'bottom', 
+                        labels: { 
+                            font: { family: 'Inter', weight: '600', size: 12 }, 
+                            padding: 20,
+                            usePointStyle: true,
+                            pointStyle: 'circle'
+                        } 
+                    },
+                    tooltip: {
+                        backgroundColor: '#1e293b',
+                        padding: 12,
+                        titleFont: { size: 14, weight: 'bold' },
+                        callbacks: {
+                            label: (context) => ` ${context.dataset.label}: ${context.raw}%`
+                        }
+                    }
+                },
+                scales: {
+                    x: { grid: { display: false } },
+                    y: { 
+                        beginAtZero: true, 
+                        ticks: { callback: v => v + '%' }, 
+                        grid: { color: '#f1f5f9' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
